@@ -1,0 +1,4 @@
+// ncmbController.js
+
+var ncmbController = {
+}
