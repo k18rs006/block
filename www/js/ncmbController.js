@@ -210,6 +210,7 @@ showRanking: function() {
         .then(function(results){
 
             // 取得した内容をコンソールに表示
+            var tableSource="";
             if(results.length > 0){
                 for(i=0; i<results.length; i++){
                     var score = results[i],
@@ -221,11 +222,19 @@ showRanking: function() {
                           displayName=score.user.displayName;
                         }
 
-                    console.log(rank + ": " + value);
+                         tableSource += "<li class=\"list__item list__item--inset\">"
+                    + rank + ":"
+                    + displayName
+                    + " (" + value + ")</li>";
                 }
             } else {
-                console.log("スコアデータがありません");
+                tableSource += "<li class=\"list__item list__item--inset\">ランキングはありません</li>";
             }
+
+            $("#rankingTable").html(tableSource);
+
+            //ランキング画面を表示する
+            $("#ranking").show();
 
         })
         .catch(function(err){
@@ -233,10 +242,18 @@ showRanking: function() {
         });
 },
 
+//ランキング画面を閉じる
+closeRanking:function() {
+    $("#ranking").hide();
+},
+
   init:function(screenSize){
     var self = this;
     self.ncmb = new NCMB(self.APPLICATION_KEY,self.CLIENT_KEY);
     self.screenSize = screenSize;
+    $("body").on("click", "#closeRanking", function(){
+    self.closeRanking();
+});
   }
 
 }

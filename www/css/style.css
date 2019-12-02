@@ -56,4 +56,17 @@ canvas {
 .button{
   background: #b22222;
 }
+.ranking{
+    display: none;
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    color: #fff;
+    background: #000;
+    text-align: center;
+    z-index: 3;
+}
 
+.rankingTable{
+    margin: 10px 0;
+}
