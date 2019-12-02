@@ -204,6 +204,7 @@ showRanking: function() {
 
     //スコアを降順に10件取得
     Score.order("score", true)
+        .include("user")
         .limit(10)
         .fetchAll()
         .then(function(results){
@@ -214,6 +215,11 @@ showRanking: function() {
                     var score = results[i],
                         rank = i + 1,
                         value = parseInt(score.score);
+                        displayName="NO NAME";
+
+                        if(score.user!==undefined){
+                          displayName=score.user.displayName;
+                        }
 
                     console.log(rank + ": " + value);
                 }
