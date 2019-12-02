@@ -340,6 +340,7 @@ function init() {
 
     requestAnimFrame(animate);
     ncmbController.init(BB.screenSize);
+    ncmbController.createUser();
 }
 
 
