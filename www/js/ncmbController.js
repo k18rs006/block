@@ -196,6 +196,37 @@ finishGame: function(score){
     }
 },
 
+showRanking: function() {
+    var self = this;
+
+    //スコア情報を取得するため、クラスを作成
+    var Score = self.ncmb.DataStore("ScoreClass");
+
+    //スコアを降順に10件取得
+    Score.order("score", true)
+        .limit(10)
+        .fetchAll()
+        .then(function(results){
+
+            // 取得した内容をコンソールに表示
+            if(results.length > 0){
+                for(i=0; i<results.length; i++){
+                    var score = results[i],
+                        rank = i + 1,
+                        value = parseInt(score.score);
+
+                    console.log(rank + ": " + value);
+                }
+            } else {
+                console.log("スコアデータがありません");
+            }
+
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+},
+
   init:function(screenSize){
     var self = this;
     self.ncmb = new NCMB(self.APPLICATION_KEY,self.CLIENT_KEY);

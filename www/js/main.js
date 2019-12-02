@@ -221,6 +221,19 @@ var BB = {
         setTimeout(function() {
             resetLabel.setText("RESET"); //for Android
         }, 1000, resetLabel);
+
+         var rankingLabel = new PIXI.Text("RANKING", {font: "24px/1.2 vt", fill: "red"});
+          rankingLabel.position.x = 80;
+          rankingLabel.position.y = BB.renderer.height - 52;
+          BB.stage.addChild(rankingLabel);
+          rankingLabel.buttonMode = true;
+          rankingLabel.interactive = true;
+          rankingLabel.click = rankingLabel.tap = function(data) {
+          ncmbController.showRanking();
+    };
+    setTimeout(function() {
+        rankingLabel.setText("RANKING"); //for Android
+    }, 1000, rankingLabel);
         
         var label = new PIXI.Text("SCORE:", {font: "24px/1.2 vt", fill: "red"});
         label.position.x = 20;
