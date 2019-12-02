@@ -15,7 +15,7 @@ var ncmbController = {
     var Score = self.ncmb.DataStore("ScoreClass");
 
     // [2]インスタンス生成、スコア数値をフィールド名"score"にセット
-    var scoreData = new Score({score: score});
+    var scoreData = new Score({score: score,user:self.currentUser});
 
     // [3]送信処理
     scoreData.save()
